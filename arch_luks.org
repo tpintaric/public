@@ -122,16 +122,19 @@
 - Uncomment and make:       --country  Canada, United States
   
 ** Install apps
-- sudo pacman -S neovim nodejs tmux npm firefox
-- sudo pacman -S xdg-desktop-portal
-- sudo pacman -S thunderbird thunar gimp emacs
-- sudo pacman -S bash-completion i3 i3-gaps dmenu rofi i3lock xss-lock
-- sudo pacman -S kitty rsync
-- sudo pacman -S xorg xorg-init xorg-twm xterm nitrogen picom xf86-video-fbdev nitrogen picom xorg-fonts-100dpi xorg-fonts-75dpi autorandr
-- pacman -S xf86-input-libinput synaptics
+- sudo pacman -S ansible
+
+*** Pull all package requirements from ssh
+- Once authenticated, connect to repo and pull all packages down using:
+pacman -Qqe > package_list.txt
+    Or if you prefer only native and explicitly installed packages:
+pacman -Qqen > package_list.txt
+    To install the packages listed in the file:
+pacman -S - < package_list.txt
+    Replace pacman with pacaur or your AUR helper if needed.
+
 ** Display Manager:  Lightdm
 - Used to display a graphical display manager after shell boot.
-- sudo pacman -S lightdm
 - sudo systemctl enable lightdm
 
 *** Install greeter
